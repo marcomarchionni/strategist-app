@@ -1,7 +1,7 @@
 import { NgFor } from '@angular/common';
 import { Component } from '@angular/core';
-import { DataService } from '../data.service';
-import { Record } from '../interfaces/record.interface';
+import { DataService } from '../../services/data/data.service';
+import { Record } from '../../interfaces/record.interface';
 
 @Component({
   selector: 'app-grid',

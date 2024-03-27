@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Record } from './interfaces/record.interface';
+import { Record } from '../../interfaces/record.interface';
 
 @Injectable({
   providedIn: 'root',
