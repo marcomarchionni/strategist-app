@@ -1,4 +1,12 @@
 <mat-toolbar color="primary">
+  <button
+    mat-icon-button
+    (click)="toggleSidenav ? toggleSidenav() : null"
+    class="menu-icon"
+    aria-label="Example icon-button with menu icon"
+  >
+    <mat-icon>menu</mat-icon>
+  </button>
   <span>Portfolio Strategist</span>
   <span class="header-spacer"></span>
   <button
