@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { DataService } from '../../services/data/data.service';
-import { FilterComponent } from '../filter/filter.component';
+import { FilterComponent } from '../trade-filter/trade-filter.component';
 import { TradeFind } from '../../interfaces/filter-parameters';
 import { Trade } from '../../interfaces/entities';
 import { Observable } from 'rxjs';

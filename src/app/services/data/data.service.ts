@@ -64,10 +64,11 @@ export class DataService {
       return (
         (!tradeFind.after || trade.date >= tradeFind.after) &&
         (!tradeFind.before || trade.date <= tradeFind.before) &&
-        (!tradeFind.symbol || trade.symbol === tradeFind.symbol) &&
+        (!tradeFind.symbol || trade.symbol.includes(tradeFind.symbol)) &&
         (!tradeFind.assetClass || trade.symbol === tradeFind.assetClass) &&
-        (!tradeFind.hasStrategy ||
-          (tradeFind.hasStrategy && trade.strategy !== null))
+        (tradeFind.hasStrategy === null ||
+          (tradeFind.hasStrategy && trade.strategy !== null) ||
+          (!tradeFind.hasStrategy && trade.strategy === null))
       );
     });
   }

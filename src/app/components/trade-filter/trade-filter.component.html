@@ -1,4 +1,4 @@
-<form [formGroup]="form" (ngSubmit)="submit()">
+<form [formGroup]="form">
   <mat-form-field appearance="fill">
     <mat-label>Start Date</mat-label>
     <input matInput [matDatepicker]="startDatePicker" formControlName="after" />
@@ -39,10 +39,9 @@
   <mat-form-field appearance="fill">
     <mat-label>Strategy Tag</mat-label>
     <mat-select formControlName="hasStrategy">
-      <mat-option></mat-option>
-      <mat-option value="tagged">Tagged</mat-option>
-      <mat-option value="untagged">Untagged</mat-option>
+      <mat-option [value]="null"></mat-option>
+      <mat-option [value]="true">Tagged</mat-option>
+      <mat-option [value]="false">Untagged</mat-option>
     </mat-select>
   </mat-form-field>
-  <button type="submit" mat-raised-button>Submit</button>
 </form>

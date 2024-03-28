@@ -1,4 +1,10 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnDestroy,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -8,9 +14,10 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { TradeFind } from '../../interfaces/filter-parameters';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
-  selector: 'app-filter',
+  selector: 'app-trade-filter',
   standalone: true,
   imports: [
     MatInputModule,
@@ -21,11 +28,12 @@ import { TradeFind } from '../../interfaces/filter-parameters';
     MatButtonModule,
   ],
   providers: [provideNativeDateAdapter()],
-  templateUrl: './filter.component.html',
-  styleUrl: './filter.component.scss',
+  templateUrl: './trade-filter.component.html',
+  styleUrl: './trade-filter.component.scss',
 })
-export class FilterComponent implements OnInit {
+export class FilterComponent implements OnInit, OnDestroy {
   form: FormGroup = new FormGroup({});
+  private destroy$ = new Subject<void>();
   @Output() formSubmit = new EventEmitter<TradeFind>();
 
   constructor(private fb: FormBuilder) {}
@@ -38,9 +46,14 @@ export class FilterComponent implements OnInit {
       assetClass: [null],
       hasStrategy: [null],
     });
+
+    this.form.valueChanges.pipe(takeUntil(this.destroy$)).subscribe((value) => {
+      this.formSubmit.emit(value);
+    });
   }
 
-  submit() {
-    this.formSubmit.emit(this.form.value);
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }
