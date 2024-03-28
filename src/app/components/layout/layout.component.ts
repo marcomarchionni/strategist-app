@@ -6,7 +6,7 @@ import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { HeaderComponent } from '../header/header.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
-import { ContentComponent } from '../content/content.component';
+import { ViewComponent } from '../trade-view/trade-view.component';
 
 @Component({
   selector: 'app-layout',
@@ -21,7 +21,7 @@ import { ContentComponent } from '../content/content.component';
     MatListModule,
     HeaderComponent,
     SidebarComponent,
-    ContentComponent,
+    ViewComponent,
   ],
 })
 export class LayoutComponent {
