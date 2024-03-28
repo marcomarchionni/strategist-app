@@ -1,0 +1,48 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <mat-form-field appearance="fill">
+    <mat-label>Start Date</mat-label>
+    <input matInput [matDatepicker]="startDatePicker" formControlName="after" />
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle
+      matSuffix
+      [for]="startDatePicker"
+    ></mat-datepicker-toggle>
+    <mat-datepicker #startDatePicker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>End Date</mat-label>
+    <input matInput [matDatepicker]="endDatePicker" formControlName="before" />
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle
+      matSuffix
+      [for]="endDatePicker"
+    ></mat-datepicker-toggle>
+    <mat-datepicker #endDatePicker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Symbol</mat-label>
+    <input matInput placeholder="Enter asset symbol" formControlName="symbol" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Asset Class</mat-label>
+    <mat-select formControlName="assetClass">
+      <mat-option></mat-option>
+      <mat-option value="hr">Stock</mat-option>
+      <mat-option value="it">Option</mat-option>
+      <mat-option value="finance">Future</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Strategy Tag</mat-label>
+    <mat-select formControlName="hasStrategy">
+      <mat-option></mat-option>
+      <mat-option value="tagged">Tagged</mat-option>
+      <mat-option value="untagged">Untagged</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <button type="submit" mat-raised-button>Submit</button>
+</form>
