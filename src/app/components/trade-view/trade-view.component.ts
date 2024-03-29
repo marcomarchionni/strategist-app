@@ -23,4 +23,8 @@ export class ViewComponent {
     console.log(tradeFind);
     this.tableData$ = this.dataService.fetchTrades(tradeFind);
   }
+
+  handleStrategyUpdate({ trade }: { trade: Trade }) {
+    this.dataService.updateStrategy(trade);
+  }
 }

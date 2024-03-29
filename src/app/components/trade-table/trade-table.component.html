@@ -11,7 +11,16 @@
   </ng-container>
   <ng-container matColumnDef="strategy">
     <th mat-header-cell *matHeaderCellDef>Strategy</th>
-    <td mat-cell *matCellDef="let trade">{{ trade.strategy }}</td>
+    <td mat-cell *matCellDef="let trade">
+      <mat-select
+        [(value)]="trade.strategy"
+        (selectionChange)="updateStrategy(trade)"
+      >
+        <mat-option *ngFor="let strategy of strategies" [value]="strategy">{{
+          strategy
+        }}</mat-option>
+      </mat-select>
+    </td>
   </ng-container>
   <ng-container matColumnDef="quantity">
     <th mat-header-cell *matHeaderCellDef>Quantity</th>

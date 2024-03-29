@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Record } from '../../interfaces/record.interface';
 import { Trade } from '../../interfaces/entities';
 import { TradeFind } from '../../interfaces/filter-parameters';
 import { Observable, of } from 'rxjs';
@@ -12,6 +11,7 @@ export class DataService {
 
   trades: Trade[] = [
     {
+      id: 1,
       date: new Date('01/01/2019'),
       symbol: 'AAPL',
       strategy: null,
@@ -19,6 +19,7 @@ export class DataService {
       price: 150.0,
     },
     {
+      id: 2,
       date: new Date('11/1/2020'),
       symbol: 'GOOGL',
       strategy: null,
@@ -26,6 +27,7 @@ export class DataService {
       price: 800.0,
     },
     {
+      id: 3,
       date: new Date('1/30/2021'),
       symbol: 'MSFT',
       strategy: 'MSFT long',
@@ -33,6 +35,7 @@ export class DataService {
       price: 75.0,
     },
     {
+      id: 4,
       date: new Date('1/25/2023'),
       symbol: 'AMZN',
       strategy: 'AMZN long',
@@ -40,15 +43,6 @@ export class DataService {
       price: 1000.0,
     },
   ];
-
-  getRecords(): Record[] {
-    return [
-      { symbol: 'AAPL', quantity: 100, price: 150.0 },
-      { symbol: 'GOOGL', quantity: 50, price: 800.0 },
-      { symbol: 'MSFT', quantity: 75, price: 75.0 },
-      { symbol: 'AMZN', quantity: 25, price: 1000.0 },
-    ];
-  }
 
   fetchTrades(tradeFind?: TradeFind): Observable<Trade[]> {
     let tradesToReturn = this.trades;
@@ -71,5 +65,17 @@ export class DataService {
           (!tradeFind.hasStrategy && trade.strategy === null))
       );
     });
+  }
+
+  updateStrategy(trade: Trade) {
+    this.trades
+      .filter((t) => t.id === trade.id)
+      .forEach((t) => {
+        t.strategy = trade.strategy;
+        console.log(
+          `Updated strategy for trade with id: ${t.id} to ${t.strategy}`
+        );
+        console.log(this.trades);
+      });
   }
 }

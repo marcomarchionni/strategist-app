@@ -1,4 +1,7 @@
 <div>
   <app-trade-filter (formSubmit)="handleFormSubmit($event)"></app-trade-filter>
-  <app-trade-table [tableData$]="tableData$"></app-trade-table>
+  <app-trade-table
+    [tableData$]="tableData$"
+    (strategyUpdated)="handleStrategyUpdate($event)"
+  ></app-trade-table>
 </div>
