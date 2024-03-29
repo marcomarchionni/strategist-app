@@ -17,7 +17,13 @@ export class TradeTableComponent {
   @Input() tableData$: Observable<Trade[]> = new Observable<Trade[]>();
   @Output() strategyUpdated = new EventEmitter<{ trade: Trade }>();
   displayedColumns = ['date', 'symbol', 'strategy', 'quantity', 'price'];
-  strategies: string[] = ['MSFT long', 'AMZN long', 'AAPL long', 'GOOGL long'];
+  strategies: string[] = [
+    '',
+    'MSFT long',
+    'AMZN long',
+    'AAPL long',
+    'GOOGL long',
+  ];
 
   updateStrategy(trade: Trade) {
     this.strategyUpdated.emit({ trade });

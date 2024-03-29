@@ -71,7 +71,11 @@ export class DataService {
     this.trades
       .filter((t) => t.id === trade.id)
       .forEach((t) => {
-        t.strategy = trade.strategy;
+        if (trade.strategy === '') {
+          trade.strategy = null;
+        } else {
+          t.strategy = trade.strategy;
+        }
         console.log(
           `Updated strategy for trade with id: ${t.id} to ${t.strategy}`
         );
