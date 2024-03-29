@@ -14,7 +14,7 @@ import { TradeTableComponent } from '../trade-table/trade-table.component';
   providers: [],
   imports: [FilterComponent, TradeTableComponent],
 })
-export class ViewComponent {
+export class TradeViewComponent {
   tableData$: Observable<Trade[]> = this.dataService.fetchTrades();
 
   constructor(private dataService: DataService) {}

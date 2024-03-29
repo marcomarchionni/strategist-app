@@ -1,17 +1,17 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ViewComponent } from './trade-view.component';
+import { TradeViewComponent } from './trade-view.component';
 
 describe('ContentComponent', () => {
-  let component: ViewComponent;
-  let fixture: ComponentFixture<ViewComponent>;
+  let component: TradeViewComponent;
+  let fixture: ComponentFixture<TradeViewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ViewComponent],
+      imports: [TradeViewComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ViewComponent);
+    fixture = TestBed.createComponent(TradeViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,28 +1,15 @@
 import { Component, ViewChild } from '@angular/core';
-import { MatToolbar } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
 import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
-import { MatListModule } from '@angular/material/list';
 import { HeaderComponent } from '../header/header.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
-import { ViewComponent } from '../trade-view/trade-view.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-layout',
   standalone: true,
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',
-  imports: [
-    MatToolbar,
-    MatIconModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatListModule,
-    HeaderComponent,
-    SidebarComponent,
-    ViewComponent,
-  ],
+  imports: [MatSidenavModule, HeaderComponent, SidebarComponent, RouterOutlet],
 })
 export class LayoutComponent {
   @ViewChild(MatSidenav) sidenav: MatSidenav | undefined;
