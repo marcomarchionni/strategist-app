@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
-import { TradeViewComponent } from './components/trade-view/trade-view.component';
-import { PositionViewComponent } from './components/position-view/position-view.component';
+import { TradeViewComponent } from './components/views/trades/trade-view/trade-view.component';
+import { PositionViewComponent } from './components/views/positions/position-view/position-view.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'trades', pathMatch: 'full' },

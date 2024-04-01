@@ -6,7 +6,7 @@ import { Observable, of } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class DataService {
+export class TradeService {
   constructor() {}
 
   trades: Trade[] = [

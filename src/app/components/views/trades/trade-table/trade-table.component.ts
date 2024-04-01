@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Trade } from '../../interfaces/entities';
+import { Trade } from '../../../../interfaces/entities';
 import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
 import { DatePipe } from '@angular/common';

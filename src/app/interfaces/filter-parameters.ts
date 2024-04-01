@@ -12,3 +12,9 @@ export interface TradeFind {
   assetClass?: AssetClass;
   hasStrategy?: boolean;
 }
+
+export interface PositionFind {
+  symbol?: string;
+  assetClass?: AssetClass;
+  hasStrategy?: boolean;
+}

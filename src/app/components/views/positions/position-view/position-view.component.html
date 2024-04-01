@@ -1,0 +1,9 @@
+<div>
+  <app-position-filter
+    (formSubmit)="handleFormSubmit($event)"
+  ></app-position-filter>
+  <app-position-table
+    [tableData$]="tableData$"
+    (strategyUpdated)="handleStrategyUpdate($event)"
+  ></app-position-table>
+</div>
