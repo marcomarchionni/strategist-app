@@ -3,6 +3,7 @@ import { TradeViewComponent } from './components/trade-view/trade-view.component
 import { PositionViewComponent } from './components/position-view/position-view.component';
 
 export const routes: Routes = [
-  { path: 'trade-view', component: TradeViewComponent },
-  { path: 'position-view', component: PositionViewComponent },
+  { path: '', redirectTo: 'trades', pathMatch: 'full' },
+  { path: 'trades', component: TradeViewComponent },
+  { path: 'positions', component: PositionViewComponent },
 ];
