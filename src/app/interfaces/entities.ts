@@ -3,6 +3,7 @@ export interface Trade {
   date: Date;
   symbol: string;
   strategy: string | null;
+  assetClass: string;
   quantity: number;
   price: number;
 }
@@ -11,6 +12,7 @@ export interface Position {
   id: number;
   reportDate: Date;
   symbol: string;
+  assetClass: string;
   strategy: string | null;
   quantity: number;
   price: number;

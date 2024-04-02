@@ -22,6 +22,10 @@
       </mat-select>
     </td>
   </ng-container>
+  <ng-container matColumnDef="assetClass">
+    <th mat-header-cell *matHeaderCellDef>Asset Class</th>
+    <td mat-cell *matCellDef="let position">{{ position.assetClass }}</td>
+  </ng-container>
   <ng-container matColumnDef="quantity">
     <th mat-header-cell *matHeaderCellDef>Quantity</th>
     <td mat-cell *matCellDef="let position">{{ position.quantity }}</td>

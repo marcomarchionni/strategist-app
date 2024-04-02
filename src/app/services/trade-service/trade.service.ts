@@ -14,6 +14,7 @@ export class TradeService {
       id: 1,
       date: new Date('01/01/2019'),
       symbol: 'AAPL',
+      assetClass: 'STK',
       strategy: null,
       quantity: 100,
       price: 150.0,
@@ -22,6 +23,7 @@ export class TradeService {
       id: 2,
       date: new Date('11/1/2020'),
       symbol: 'GOOGL',
+      assetClass: 'STK',
       strategy: null,
       quantity: 50,
       price: 800.0,
@@ -30,6 +32,7 @@ export class TradeService {
       id: 3,
       date: new Date('1/30/2021'),
       symbol: 'MSFT',
+      assetClass: 'STK',
       strategy: 'MSFT long',
       quantity: 75,
       price: 75.0,
@@ -38,6 +41,7 @@ export class TradeService {
       id: 4,
       date: new Date('1/25/2023'),
       symbol: 'AMZN',
+      assetClass: 'STK',
       strategy: 'AMZN long',
       quantity: 25,
       price: 1000.0,
@@ -59,7 +63,7 @@ export class TradeService {
         (!tradeFind.after || trade.date >= tradeFind.after) &&
         (!tradeFind.before || trade.date <= tradeFind.before) &&
         (!tradeFind.symbol || trade.symbol.includes(tradeFind.symbol)) &&
-        (!tradeFind.assetClass || trade.symbol === tradeFind.assetClass) &&
+        (!tradeFind.assetClass || trade.assetClass === tradeFind.assetClass) &&
         (tradeFind.hasStrategy === null ||
           (tradeFind.hasStrategy && trade.strategy !== null) ||
           (!tradeFind.hasStrategy && trade.strategy === null))
