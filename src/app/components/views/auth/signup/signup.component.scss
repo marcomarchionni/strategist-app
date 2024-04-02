@@ -1,0 +1,13 @@
+.form-box {
+  background-color: #f8f9fa; // light gray
+  border: 1px solid #dee2e6; // gray
+  border-radius: 0.25rem; // rounded corners
+  padding: 1rem;
+  margin: 1rem;
+  flex: 1 0 20em; // grow and shrink equally, basis of 20em
+  max-width: 600px;
+}
+
+mat-form-field {
+  width: 100%;
+}
