@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Observable, tap } from 'rxjs';
-import { Position } from '../../../../interfaces/entities';
+import { Position } from '../../../interfaces/entities';
 import { MatTableModule } from '@angular/material/table';
 import { MatSelectModule } from '@angular/material/select';
 import { CommonModule } from '@angular/common';

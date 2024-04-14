@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { TradeService } from '../../../../services/trade-service/trade.service';
+import { TradeService } from '../../../services/trade-service/trade.service';
 import { TradeFilterComponent as TradeFilterComponent } from '../trade-filter/trade-filter.component';
-import { TradeFind } from '../../../../interfaces/filter-parameters';
-import { Trade } from '../../../../interfaces/entities';
+import { TradeFind } from '../../../interfaces/filter-parameters';
+import { Trade } from '../../../interfaces/entities';
 import { Observable } from 'rxjs';
 import { TradeTableComponent } from '../trade-table/trade-table.component';
 

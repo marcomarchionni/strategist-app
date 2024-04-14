@@ -12,7 +12,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Subject, takeUntil } from 'rxjs';
-import { PositionFind } from '../../../../interfaces/filter-parameters';
+import { PositionFind } from '../../../interfaces/filter-parameters';
 
 @Component({
   selector: 'app-position-filter',

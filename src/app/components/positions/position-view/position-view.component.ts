@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { PositionFilterComponent } from '../position-filter/position-filter.component';
 import { PositionTableComponent } from '../position-table/position-table.component';
 import { Observable } from 'rxjs';
-import { Position } from '../../../../interfaces/entities';
-import { PositionService } from '../../../../services/position-service/position.service';
-import { PositionFind } from '../../../../interfaces/filter-parameters';
+import { Position } from '../../../interfaces/entities';
+import { PositionService } from '../../../services/position-service/position.service';
+import { PositionFind } from '../../../interfaces/filter-parameters';
 
 @Component({
   selector: 'app-position-view',

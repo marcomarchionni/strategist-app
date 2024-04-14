@@ -13,7 +13,7 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
-import { TradeFind } from '../../../../interfaces/filter-parameters';
+import { TradeFind } from '../../../interfaces/filter-parameters';
 import { Subject, takeUntil } from 'rxjs';
 
 @Component({
