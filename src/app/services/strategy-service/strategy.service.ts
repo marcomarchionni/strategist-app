@@ -19,4 +19,8 @@ export class StrategyService {
   fetchShortStrategies() {
     return of(this.shortStrategies || []);
   }
+
+  getShortStrategies(): ShortStrategy[] {
+    return this.shortStrategies;
+  }
 }

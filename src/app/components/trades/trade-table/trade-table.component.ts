@@ -14,6 +14,7 @@ import {
 } from '@syncfusion/ej2-angular-grids';
 import { DataManager, Query } from '@syncfusion/ej2-data';
 import { TradeService } from '../../../services/trade-service/trade.service';
+import { StrategyService } from '../../../services/strategy-service/strategy.service';
 
 @Component({
   selector: 'app-trade-table',
@@ -24,18 +25,12 @@ import { TradeService } from '../../../services/trade-service/trade.service';
   providers: [EditService, ToolbarService, PageService, CommandColumnService],
 })
 export class TradeTableComponent {
-  @Input() tableData$ = new Observable<TradesTableData>();
-  constructor(private tradesService: TradeService) {}
-  data$ = this.tradesService.fetchTrades();
-  // @Output() strategyUpdated = new EventEmitter<{ trade: Trade }>();
-
-  public strategies: Object[] = [
-    { id: 1, name: 'Select strategy' },
-    { id: 2, name: 'MSFT long' },
-    { id: 3, name: 'AMZN long' },
-    { id: 4, name: 'AAPL long' },
-    { id: 5, name: 'GOOGL long' },
-  ];
+  constructor(
+    private tradesService: TradeService,
+    private strategyService: StrategyService
+  ) {}
+  tableData = this.tradesService.getTrades();
+  strategies = this.strategyService.getShortStrategies();
 
   public strategyParams: IEditCell = {
     params: {
@@ -60,10 +55,6 @@ export class TradeTableComponent {
     'Update',
     'Cancel',
   ];
-
-  // updateStrategy(trade: Trade) {
-  //   this.strategyUpdated.emit({ trade });
-  // }
 
   onStrategyUpdate($event: any) {
     console.log($event);
