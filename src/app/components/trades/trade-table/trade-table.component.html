@@ -1,35 +1,53 @@
-<table mat-table [dataSource]="tableData$">
-  <ng-container matColumnDef="date">
-    <th mat-header-cell *matHeaderCellDef>Date</th>
-    <td mat-cell *matCellDef="let trade">
-      {{ trade.date | date : "shortDate" }}
-    </td>
-  </ng-container>
-  <ng-container matColumnDef="symbol">
-    <th mat-header-cell *matHeaderCellDef>Symbol</th>
-    <td mat-cell *matCellDef="let trade">{{ trade.symbol }}</td>
-  </ng-container>
-  <ng-container matColumnDef="strategy">
-    <th mat-header-cell *matHeaderCellDef>Strategy</th>
-    <td mat-cell *matCellDef="let trade">
-      <mat-select
-        [(value)]="trade.strategy"
-        (selectionChange)="updateStrategy(trade)"
-      >
-        <mat-option *ngFor="let strategy of strategies" [value]="strategy">{{
-          strategy
-        }}</mat-option>
-      </mat-select>
-    </td>
-  </ng-container>
-  <ng-container matColumnDef="quantity">
-    <th mat-header-cell *matHeaderCellDef>Quantity</th>
-    <td mat-cell *matCellDef="let trade">{{ trade.quantity }}</td>
-  </ng-container>
-  <ng-container matColumnDef="price">
-    <th mat-header-cell *matHeaderCellDef>Price</th>
-    <td mat-cell *matCellDef="let trade">{{ trade.price }}</td>
-  </ng-container>
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-</table>
+<ejs-grid
+  [dataSource]="data$ | async"
+  [editSettings]="editSettings"
+  [toolbar]="toolbar"
+>
+  <e-columns>
+    <e-column
+      field="id"
+      headerText="ID"
+      isPrimaryKey="true"
+      textAlign="Right"
+      width="100"
+      [visible]="false"
+      [allowEditing]="false"
+    ></e-column>
+    <e-column
+      field="date"
+      headerText="Date"
+      format="yMd"
+      textAlign="Right"
+      width="100"
+      [allowEditing]="false"
+    ></e-column>
+    <e-column
+      field="symbol"
+      headerText="Symbol"
+      width="120"
+      [allowEditing]="false"
+    ></e-column>
+    <e-column
+      field="strategy"
+      headerText="Strategy"
+      editType="dropdownedit"
+      [edit]="strategyParams"
+      width="150"
+    ></e-column>
+    <e-column
+      field="quantity"
+      headerText="Quantity"
+      textAlign="Right"
+      width="100"
+      [allowEditing]="false"
+    ></e-column>
+    <e-column
+      field="price"
+      headerText="Price"
+      format="C2"
+      textAlign="Right"
+      width="100"
+      [allowEditing]="false"
+    ></e-column>
+  </e-columns>
+</ejs-grid>

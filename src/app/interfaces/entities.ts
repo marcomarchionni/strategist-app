@@ -39,3 +39,13 @@ export interface Portfolio {
   name: string;
   strategies: Strategy[];
 }
+
+export interface ShortStrategy {
+  id: number;
+  name: string;
+}
+
+export interface TradesTableData {
+  result: Trade[];
+  count: number;
+}

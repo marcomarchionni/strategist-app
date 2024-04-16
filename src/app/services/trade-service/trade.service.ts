@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Trade } from '../../interfaces/entities';
+import { Trade, TradesTableData } from '../../interfaces/entities';
 import { TradeFind } from '../../interfaces/filter-parameters';
 import { Observable, of } from 'rxjs';
 
@@ -57,6 +57,20 @@ export class TradeService {
     return of(tradesToReturn || []);
   }
 
+  fetchTradesTableData(tradeFind?: TradeFind): Observable<TradesTableData> {
+    let tradesToReturn = this.trades;
+
+    if (tradeFind) {
+      tradesToReturn = this.filterTrades(this.trades, tradeFind);
+    }
+    return of(
+      { result: tradesToReturn, count: tradesToReturn.length } || {
+        result: [],
+        count: 0,
+      }
+    );
+  }
+
   private filterTrades(trades: Trade[], tradeFind: TradeFind): Trade[] {
     return trades.filter((trade) => {
       return (
@@ -85,5 +99,9 @@ export class TradeService {
         );
         console.log(this.trades);
       });
+  }
+
+  getTrades() {
+    return this.trades;
   }
 }

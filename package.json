@@ -20,6 +20,10 @@
     "@angular/platform-browser": "^17.3.0",
     "@angular/platform-browser-dynamic": "^17.3.0",
     "@angular/router": "^17.3.0",
+    "@syncfusion/ej2-angular-grids": "^25.1.39",
+    "@syncfusion/ej2-base": "^25.1.35",
+    "@syncfusion/ej2-data": "^25.1.35",
+    "@syncfusion/ej2-grids": "^25.1.39",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
