@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Trade, TradesTableData } from '../../interfaces/entities';
 import { TradeFind } from '../../interfaces/filter-parameters';
 import { Observable, of } from 'rxjs';
+import { DataManager } from '@syncfusion/ej2-data';
 
 @Injectable({
   providedIn: 'root',
@@ -102,6 +103,6 @@ export class TradeService {
   }
 
   getTrades() {
-    return this.trades;
+    return new DataManager(this.trades);
   }
 }

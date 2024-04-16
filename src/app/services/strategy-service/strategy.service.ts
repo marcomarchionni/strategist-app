@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { of } from 'rxjs';
 import { Strategy, ShortStrategy } from '../../interfaces/entities';
+import { DataManager } from '@syncfusion/ej2-data';
 
 @Injectable({
   providedIn: 'root',
@@ -20,7 +21,7 @@ export class StrategyService {
     return of(this.shortStrategies || []);
   }
 
-  getShortStrategies(): ShortStrategy[] {
-    return this.shortStrategies;
+  getShortStrategies(): DataManager {
+    return new DataManager(this.shortStrategies);
   }
 }

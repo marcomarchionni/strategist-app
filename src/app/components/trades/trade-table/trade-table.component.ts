@@ -1,6 +1,4 @@
-import { Component, Input } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Trade, TradesTableData } from '../../../interfaces/entities';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   GridModule,
@@ -13,8 +11,6 @@ import {
   ToolbarItems,
 } from '@syncfusion/ej2-angular-grids';
 import { DataManager, Query } from '@syncfusion/ej2-data';
-import { TradeService } from '../../../services/trade-service/trade.service';
-import { StrategyService } from '../../../services/strategy-service/strategy.service';
 
 @Component({
   selector: 'app-trade-table',
@@ -24,22 +20,25 @@ import { StrategyService } from '../../../services/strategy-service/strategy.ser
   styleUrl: './trade-table.component.scss',
   providers: [EditService, ToolbarService, PageService, CommandColumnService],
 })
-export class TradeTableComponent {
-  constructor(
-    private tradesService: TradeService,
-    private strategyService: StrategyService
-  ) {}
-  tableData = this.tradesService.getTrades();
-  strategies = this.strategyService.getShortStrategies();
+export class TradeTableComponent implements OnInit {
+  @Input() tableData!: DataManager;
+  @Input() strategies!: DataManager;
+  public strategyParams!: IEditCell;
 
-  public strategyParams: IEditCell = {
-    params: {
-      dataSource: new DataManager(this.strategies),
-      fields: { value: 'name', text: 'name' },
-      query: new Query(),
-      actionComplete: () => false,
-    },
-  };
+  ngOnInit(): void {
+    this.updateStrategyParams();
+  }
+
+  updateStrategyParams() {
+    this.strategyParams = {
+      params: {
+        dataSource: this.strategies,
+        fields: { value: 'name', text: 'name' },
+        query: new Query(),
+        actionComplete: () => false,
+      },
+    };
+  }
 
   public editSettings: EditSettingsModel = {
     allowEditing: true,
@@ -48,13 +47,7 @@ export class TradeTableComponent {
     mode: 'Batch',
   };
 
-  public toolbar: ToolbarItems[] = [
-    'Add',
-    'Edit',
-    'Delete',
-    'Update',
-    'Cancel',
-  ];
+  public toolbar: ToolbarItems[] = ['Edit', 'Update', 'Cancel'];
 
   onStrategyUpdate($event: any) {
     console.log($event);
