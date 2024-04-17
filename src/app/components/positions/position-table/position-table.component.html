@@ -3,6 +3,8 @@
   [dataSource]="positions"
   [editSettings]="editSettings"
   [toolbar]="toolbar"
+  [allowFiltering]="true"
+  [filterSettings]="{ type: 'Menu' }"
 >
   <e-columns>
     <e-column
@@ -19,19 +21,22 @@
       textAlign="Right"
       width="100"
       [allowEditing]="false"
+      type="date"
     ></e-column>
     <e-column
       field="symbol"
       headerText="Symbol"
       width="120"
       [allowEditing]="false"
+      type="string"
     ></e-column>
     <e-column
       field="strategy"
       headerText="Strategy"
       editType="dropdownedit"
       [edit]="strategyParams"
-      width="150"
+      type="string"
+      width="100"
     ></e-column>
     <e-column
       field="assetClass"
@@ -39,6 +44,7 @@
       textAlign="Right"
       width="100"
       [allowEditing]="false"
+      type="string"
     ></e-column>
     <e-column
       field="quantity"
@@ -46,6 +52,7 @@
       textAlign="Right"
       width="100"
       [allowEditing]="false"
+      type="number"
     ></e-column>
     <e-column
       field="buyPrice"
@@ -54,6 +61,7 @@
       textAlign="Right"
       width="100"
       [allowEditing]="false"
+      type="number"
     ></e-column>
     <e-column
       field="marketPrice"
@@ -62,6 +70,7 @@
       textAlign="Right"
       width="100"
       [allowEditing]="false"
+      type="number"
     ></e-column>
     <e-column
       field="marketValue"
@@ -70,6 +79,7 @@
       textAlign="Right"
       width="100"
       [allowEditing]="false"
+      type="number"
     ></e-column>
     <e-column
       field="gainLoss"
@@ -78,6 +88,7 @@
       textAlign="Right"
       width="100"
       [allowEditing]="false"
+      type="number"
     ></e-column>
     <e-column
       field="gainLossPct"
@@ -86,6 +97,7 @@
       textAlign="Right"
       width="100"
       [allowEditing]="false"
+      type="number"
     ></e-column>
   </e-columns>
 </ejs-grid>

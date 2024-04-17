@@ -10,7 +10,7 @@ export class StrategyService {
   constructor() {}
 
   shortStrategies: ShortStrategy[] = [
-    { id: 1, name: '' },
+    { id: 1, name: 'MA long' },
     { id: 2, name: 'MSFT long' },
     { id: 3, name: 'AMZN long' },
     { id: 4, name: 'AAPL long' },

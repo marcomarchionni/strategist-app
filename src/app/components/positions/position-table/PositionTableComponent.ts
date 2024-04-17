@@ -6,22 +6,43 @@ import {
   GridModule,
   ToolbarService,
   PageService,
+  FilterService,
   IEditCell,
+  FilterSettingsModel,
 } from '@syncfusion/ej2-angular-grids';
+import {
+  MultiSelectModule,
+  DropDownListAllModule,
+  CheckBoxSelectionService,
+} from '@syncfusion/ej2-angular-dropdowns';
+import { CheckBox, CheckBoxModule } from '@syncfusion/ej2-angular-buttons';
 
 @Component({
   selector: 'app-position-table',
   standalone: true,
-  imports: [GridModule],
+  imports: [
+    GridModule,
+    MultiSelectModule,
+    DropDownListAllModule,
+    CheckBoxModule,
+  ],
   templateUrl: './position-table.component.html',
   styleUrl: './position-table.component.scss',
-  providers: [EditService, ToolbarService, PageService, CommandColumnService],
+  providers: [
+    EditService,
+    ToolbarService,
+    PageService,
+    FilterService,
+    CommandColumnService,
+    CheckBoxSelectionService,
+  ],
 })
 export class PositionTableComponent implements OnInit {
   @Input() positions?: DataManager;
   @Input() strategies?: DataManager;
 
   public strategyParams?: IEditCell;
+  public filterSettings?: FilterSettingsModel;
 
   public editSettings = {
     allowEditing: true,
@@ -42,5 +63,6 @@ export class PositionTableComponent implements OnInit {
         actionComplete: () => false,
       },
     };
+    this.filterSettings = { type: 'Menu' };
   }
 }

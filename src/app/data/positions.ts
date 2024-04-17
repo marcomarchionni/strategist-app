@@ -4,7 +4,7 @@ export const positions: Position[] = [
   {
     id: 1,
     reportDate: new Date('04/17/2024'),
-    strategy: null,
+    strategy: '',
     symbol: 'AAPL',
     assetClass: 'STK',
     quantity: 100,
@@ -17,7 +17,7 @@ export const positions: Position[] = [
   {
     id: 2,
     reportDate: new Date('04/17/2024'),
-    strategy: null,
+    strategy: '',
     symbol: 'GOOGL',
     assetClass: 'STK',
     quantity: 50,
