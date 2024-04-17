@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Position } from '../../interfaces/entities';
 import { PositionFind } from '../../interfaces/filter-parameters';
+import { DataManager } from '@syncfusion/ej2-data';
 
 @Injectable({
   providedIn: 'root',
@@ -76,5 +77,9 @@ export class PositionService {
 
   updateStrategy(position: Position) {
     console.log('Position updated');
+  }
+
+  getPositions() {
+    return new DataManager(this.positions);
   }
 }

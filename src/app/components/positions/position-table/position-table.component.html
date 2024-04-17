@@ -1,39 +1,59 @@
-<table mat-table [dataSource]="tableData$">
-  <ng-container matColumnDef="reportDate">
-    <th mat-header-cell *matHeaderCellDef>Report Date</th>
-    <td mat-cell *matCellDef="let position">
-      {{ position.reportDate | date : "shortDate" }}
-    </td>
-  </ng-container>
-  <ng-container matColumnDef="symbol">
-    <th mat-header-cell *matHeaderCellDef>Symbol</th>
-    <td mat-cell *matCellDef="let position">{{ position.symbol }}</td>
-  </ng-container>
-  <ng-container matColumnDef="strategy">
-    <th mat-header-cell *matHeaderCellDef>Strategy</th>
-    <td mat-cell *matCellDef="let position">
-      <mat-select
-        [(value)]="position.strategy"
-        (selectionChange)="updateStrategy(position)"
-      >
-        <mat-option *ngFor="let strategy of strategies" [value]="strategy">{{
-          strategy
-        }}</mat-option>
-      </mat-select>
-    </td>
-  </ng-container>
-  <ng-container matColumnDef="assetClass">
-    <th mat-header-cell *matHeaderCellDef>Asset Class</th>
-    <td mat-cell *matCellDef="let position">{{ position.assetClass }}</td>
-  </ng-container>
-  <ng-container matColumnDef="quantity">
-    <th mat-header-cell *matHeaderCellDef>Quantity</th>
-    <td mat-cell *matCellDef="let position">{{ position.quantity }}</td>
-  </ng-container>
-  <ng-container matColumnDef="price">
-    <th mat-header-cell *matHeaderCellDef>Price</th>
-    <td mat-cell *matCellDef="let position">{{ position.price }}</td>
-  </ng-container>
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-</table>
+<ejs-grid
+  #grid
+  [dataSource]="positions"
+  [editSettings]="editSettings"
+  [toolbar]="toolbar"
+>
+  <e-columns>
+    <e-column
+      field="id"
+      headerText="ID"
+      isPrimaryKey="true"
+      [visible]="false"
+      [allowEditing]="false"
+    ></e-column>
+    <e-column
+      field="reportDate"
+      headerText="Report Date"
+      format="yMd"
+      textAlign="Right"
+      width="100"
+      [allowEditing]="false"
+    ></e-column>
+    <e-column
+      field="symbol"
+      headerText="Symbol"
+      width="120"
+      [allowEditing]="false"
+    ></e-column>
+    <e-column
+      field="strategy"
+      headerText="Strategy"
+      editType="dropdownedit"
+      [edit]="strategyParams"
+      width="150"
+    ></e-column>
+    <e-column
+      field="assetClass"
+      headerText="Asset Class"
+      textAlign="Right"
+      width="100"
+      [allowEditing]="false"
+    ></e-column>
+    <e-column
+      field="quantity"
+      headerText="Quantity"
+      textAlign="Right"
+      width="100"
+      [allowEditing]="false"
+    ></e-column>
+    <e-column
+      field="price"
+      headerText="Price"
+      format="C2"
+      textAlign="Right"
+      width="100"
+      [allowEditing]="false"
+    ></e-column>
+  </e-columns>
+</ejs-grid>

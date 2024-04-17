@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PositionTableComponent } from './position-table.component';
+import { PositionTableComponent } from './PositionTableComponent';
 
 describe('PositionTableComponent', () => {
   let component: PositionTableComponent;
@@ -8,10 +8,9 @@ describe('PositionTableComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PositionTableComponent]
-    })
-    .compileComponents();
-    
+      imports: [PositionTableComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(PositionTableComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

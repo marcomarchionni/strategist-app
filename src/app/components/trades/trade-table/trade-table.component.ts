@@ -10,7 +10,6 @@ import {
   EditSettingsModel,
   ToolbarItems,
   GridComponent,
-  EditEventArgs,
 } from '@syncfusion/ej2-angular-grids';
 import { DataManager, Query } from '@syncfusion/ej2-data';
 

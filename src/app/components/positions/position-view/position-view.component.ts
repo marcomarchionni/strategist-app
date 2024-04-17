@@ -1,10 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PositionFilterComponent } from '../position-filter/position-filter.component';
-import { PositionTableComponent } from '../position-table/position-table.component';
-import { Observable } from 'rxjs';
-import { Position } from '../../../interfaces/entities';
+import { PositionTableComponent } from '../position-table/PositionTableComponent';
 import { PositionService } from '../../../services/position-service/position.service';
-import { PositionFind } from '../../../interfaces/filter-parameters';
+import { StrategyService } from '../../../services/strategy-service/strategy.service';
+import { DataManager } from '@syncfusion/ej2-data';
 
 @Component({
   selector: 'app-position-view',
@@ -13,17 +12,17 @@ import { PositionFind } from '../../../interfaces/filter-parameters';
   templateUrl: './position-view.component.html',
   styleUrl: './position-view.component.scss',
 })
-export class PositionViewComponent {
-  tableData$: Observable<Position[]> = this.positionService.fetchPositions();
+export class PositionViewComponent implements OnInit {
+  positions: DataManager = new DataManager();
+  strategies: DataManager = new DataManager();
 
-  constructor(private positionService: PositionService) {}
+  constructor(
+    private positionService: PositionService,
+    private strategyService: StrategyService
+  ) {}
 
-  handleFormSubmit(positionFind: PositionFind) {
-    console.log(positionFind);
-    this.tableData$ = this.positionService.fetchPositions(positionFind);
-  }
-
-  handleStrategyUpdate($event: { position: Position }) {
-    this.positionService.updateStrategy($event.position);
+  ngOnInit(): void {
+    this.positions = this.positionService.getPositions();
+    this.strategies = this.strategyService.getShortStrategies();
   }
 }
