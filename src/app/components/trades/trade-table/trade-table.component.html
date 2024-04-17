@@ -1,11 +1,15 @@
-<ejs-grid [dataSource]="tableData" [editSettings]="editSettings">
+<ejs-grid
+  #grid
+  [dataSource]="tableData"
+  [editSettings]="editSettings"
+  [toolbar]="toolbar"
+  (click)="onClick($event)"
+>
   <e-columns>
     <e-column
       field="id"
       headerText="ID"
       isPrimaryKey="true"
-      textAlign="Right"
-      width="100"
       [visible]="false"
       [allowEditing]="false"
     ></e-column>
