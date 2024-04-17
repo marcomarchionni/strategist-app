@@ -9,13 +9,18 @@ import {
   FilterService,
   IEditCell,
   FilterSettingsModel,
+  SortService,
 } from '@syncfusion/ej2-angular-grids';
 import {
   MultiSelectModule,
   DropDownListAllModule,
   CheckBoxSelectionService,
 } from '@syncfusion/ej2-angular-dropdowns';
-import { CheckBox, CheckBoxModule } from '@syncfusion/ej2-angular-buttons';
+import { CheckBoxModule } from '@syncfusion/ej2-angular-buttons';
+import {
+  DatePickerModule,
+  DateRangePickerModule,
+} from '@syncfusion/ej2-angular-calendars';
 
 @Component({
   selector: 'app-position-table',
@@ -25,6 +30,8 @@ import { CheckBox, CheckBoxModule } from '@syncfusion/ej2-angular-buttons';
     MultiSelectModule,
     DropDownListAllModule,
     CheckBoxModule,
+    DatePickerModule,
+    DateRangePickerModule,
   ],
   templateUrl: './position-table.component.html',
   styleUrl: './position-table.component.scss',
@@ -33,6 +40,7 @@ import { CheckBox, CheckBoxModule } from '@syncfusion/ej2-angular-buttons';
     ToolbarService,
     PageService,
     FilterService,
+    SortService,
     CommandColumnService,
     CheckBoxSelectionService,
   ],

@@ -3,6 +3,7 @@
   [dataSource]="positions"
   [editSettings]="editSettings"
   [toolbar]="toolbar"
+  [allowSorting]="true"
   [allowFiltering]="true"
   [filterSettings]="{ type: 'Menu' }"
 >
@@ -13,6 +14,7 @@
       isPrimaryKey="true"
       [visible]="false"
       [allowEditing]="false"
+      [allowFiltering]="false"
     ></e-column>
     <e-column
       field="reportDate"
@@ -21,6 +23,7 @@
       textAlign="Right"
       width="100"
       [allowEditing]="false"
+      [filter]="{ type: 'Menu', ui: { format: 'dd/MM/yyyy', mode: 'Range' } }"
       type="date"
     ></e-column>
     <e-column
@@ -29,6 +32,7 @@
       width="120"
       [allowEditing]="false"
       type="string"
+      [filter]="{ type: 'Menu' }"
     ></e-column>
     <e-column
       field="strategy"
@@ -37,6 +41,7 @@
       [edit]="strategyParams"
       type="string"
       width="100"
+      [filter]="{ type: 'Menu' }"
     ></e-column>
     <e-column
       field="assetClass"
@@ -45,6 +50,7 @@
       width="100"
       [allowEditing]="false"
       type="string"
+      [filter]="{ type: 'CheckBox' }"
     ></e-column>
     <e-column
       field="quantity"
@@ -53,6 +59,7 @@
       width="100"
       [allowEditing]="false"
       type="number"
+      [allowFiltering]="false"
     ></e-column>
     <e-column
       field="buyPrice"
@@ -62,6 +69,7 @@
       width="100"
       [allowEditing]="false"
       type="number"
+      [allowFiltering]="false"
     ></e-column>
     <e-column
       field="marketPrice"
@@ -70,6 +78,7 @@
       textAlign="Right"
       width="100"
       [allowEditing]="false"
+      [allowFiltering]="false"
       type="number"
     ></e-column>
     <e-column
@@ -80,6 +89,7 @@
       width="100"
       [allowEditing]="false"
       type="number"
+      [allowFiltering]="false"
     ></e-column>
     <e-column
       field="gainLoss"
@@ -89,6 +99,7 @@
       width="100"
       [allowEditing]="false"
       type="number"
+      [allowFiltering]="false"
     ></e-column>
     <e-column
       field="gainLossPct"
@@ -98,6 +109,7 @@
       width="100"
       [allowEditing]="false"
       type="number"
+      [allowFiltering]="false"
     ></e-column>
   </e-columns>
 </ejs-grid>
