@@ -39,7 +39,7 @@ export class PositionTableComponent implements OnInit {
         dataSource: this.strategies,
         fields: { value: 'name', text: 'name' },
         query: new Query(),
-        actionComplete: ($event) => console.log('ActionComplete', $event),
+        actionComplete: () => false,
       },
     };
   }

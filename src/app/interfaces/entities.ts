@@ -15,7 +15,11 @@ export interface Position {
   assetClass: string;
   strategy: string | null;
   quantity: number;
-  price: number;
+  buyPrice: number;
+  marketPrice: number;
+  marketValue: number;
+  gainLoss: number;
+  gainLossPct: number;
 }
 
 export interface Dividend {
