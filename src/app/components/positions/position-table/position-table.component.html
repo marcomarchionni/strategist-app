@@ -5,6 +5,7 @@
   [toolbar]="toolbar"
   [allowSorting]="true"
   [allowFiltering]="true"
+  [allowPaging]="true"
   [filterSettings]="{ type: 'Menu' }"
 >
   <e-columns>
@@ -42,6 +43,7 @@
       type="string"
       width="100"
       [filter]="{ type: 'Menu' }"
+      [customAttributes]="{ class: 'editable' }"
     ></e-column>
     <e-column
       field="assetClass"
