@@ -1,9 +1,14 @@
-<app-header (toggleSidenav)="sidenav?.toggle()"></app-header>
-<mat-sidenav-container>
-  <mat-sidenav mode="side" opened="true">
-    <app-sidebar></app-sidebar>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <router-outlet></router-outlet>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+<div>
+  <app-header (toggleSidenav)="toggleSidenav()"></app-header>
+  <div class="main-content">
+    <div>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <ejs-sidebar #sidebar [width]="250" target=".main-content">
+    <ejs-treeview
+      [fields]="fields"
+      (nodeSelected)="onNodeSelect($event)"
+    ></ejs-treeview>
+  </ejs-sidebar>
+</div>

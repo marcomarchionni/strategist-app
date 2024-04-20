@@ -12,7 +12,7 @@ import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
 export class HeaderComponent {
   @Output() toggleSidenav = new EventEmitter<void>();
 
-  onToggleSidenav() {
+  onMenuClick() {
     this.toggleSidenav.emit();
   }
 }
