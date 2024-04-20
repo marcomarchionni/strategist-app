@@ -1,19 +1,11 @@
-<mat-toolbar color="primary">
+<ejs-appbar colorMode="Primary">
   <button
-    mat-icon-button
-    (click)="onToggleSidenav()"
-    class="menu-icon"
-    aria-label="Example icon-button with menu icon"
-  >
-    <mat-icon>menu</mat-icon>
-  </button>
-  <span>Portfolio Strategist</span>
-  <span class="header-spacer"></span>
-  <button
-    mat-icon-button
-    class="example-icon favorite-icon"
-    aria-label="Example icon-button with heart icon"
-  >
-    <mat-icon>account_circle</mat-icon>
-  </button>
-</mat-toolbar>
+    #regularBtn
+    ejs-button
+    cssClass="e-inherit menu"
+    iconCss="e-icons e-menu"
+  ></button>
+  <span class="regular title-padding">Portfolio Strategist</span>
+  <div class="e-appbar-spacer"></div>
+  <button ejs-button cssClass="e-inherit login">FREE TRIAL</button>
+</ejs-appbar>
