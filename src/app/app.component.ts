@@ -1,15 +1,22 @@
-import { Component } from '@angular/core';
-import { GridModule, PagerModule } from '@syncfusion/ej2-angular-grids';
-import { DropDownListModule, ComboBoxModule, AutoCompleteModule, MultiSelectModule, ListBoxModule, DropDownTreeModule, MentionModule } from '@syncfusion/ej2-angular-dropdowns';
-import { LayoutComponent } from './components/layout/layout.component';
+import { Component, ViewChild } from '@angular/core';
+import { HeaderComponent } from './components/header/header.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  imports: [GridModule, PagerModule, DropDownListModule, ComboBoxModule, AutoCompleteModule, MultiSelectModule, ListBoxModule, DropDownTreeModule, MentionModule, LayoutComponent],
+  imports: [HeaderComponent, RouterModule, SidebarComponent],
 })
 export class AppComponent {
   title = 'strategist-app';
+  @ViewChild(SidebarComponent) sidebar?: SidebarComponent;
+
+  toggleSidenav() {
+    console.log('toggleSidenav');
+    console.log(this.sidebar);
+    (this.sidebar as SidebarComponent).toggle();
+  }
 }

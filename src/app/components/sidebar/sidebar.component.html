@@ -1,27 +1,6 @@
-<mat-nav-list>
-  <mat-list-item>
-    <button mat-button class="menu-button">
-      <span><a routerLink="trades">Trades</a></span>
-    </button>
-  </mat-list-item>
-  <mat-list-item>
-    <button mat-button class="menu-button">
-      <span><a routerLink="positions">Positions</a></span>
-    </button>
-  </mat-list-item>
-  <mat-list-item>
-    <button mat-button class="menu-button">
-      <span> Dividends</span>
-    </button>
-  </mat-list-item>
-  <mat-list-item>
-    <button mat-button class="menu-button">
-      <span> Portfolios</span>
-    </button>
-  </mat-list-item>
-  <mat-list-item>
-    <button mat-button class="menu-button">
-      <span> Strategies</span>
-    </button>
-  </mat-list-item>
-</mat-nav-list>
+<ejs-sidebar #ejsSidebar [width]="250" [target]="target">
+  <ejs-treeview
+    [fields]="fields"
+    (nodeSelected)="onNodeSelect($event)"
+  ></ejs-treeview>
+</ejs-sidebar>
