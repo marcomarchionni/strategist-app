@@ -9,12 +9,12 @@ import {
   selector: 'app-sidebar',
   standalone: true,
   imports: [RouterLink, SidebarModule, TreeViewModule],
-  templateUrl: './sidebar.component.html',
-  styleUrl: './sidebar.component.scss',
+  templateUrl: './sidenav.component.html',
+  styleUrl: './sidenav.component.scss',
 })
-export class SidebarComponent {
+export class SidenavComponent {
   @Input() target?: string;
-  @ViewChild('ejsSidebar') public ejsSidebar?: SidebarComponent;
+  @ViewChild('ejsSidebar') public ejsSidebar?: SidenavComponent;
 
   toggle() {
     if (this.ejsSidebar) {

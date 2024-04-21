@@ -1,6 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { HeaderComponent } from './components/header/header.component';
-import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -8,15 +8,13 @@ import { RouterModule } from '@angular/router';
   standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  imports: [HeaderComponent, RouterModule, SidebarComponent],
+  imports: [HeaderComponent, RouterModule, SidenavComponent],
 })
 export class AppComponent {
   title = 'strategist-app';
-  @ViewChild(SidebarComponent) sidebar?: SidebarComponent;
+  @ViewChild(SidenavComponent) sidenav?: SidenavComponent;
 
   toggleSidenav() {
-    console.log('toggleSidenav');
-    console.log(this.sidebar);
-    (this.sidebar as SidebarComponent).toggle();
+    (this.sidenav as SidenavComponent).toggle();
   }
 }
