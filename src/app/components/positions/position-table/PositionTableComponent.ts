@@ -62,7 +62,6 @@ export class PositionTableComponent implements OnInit {
   public toolbar = ['Update', 'Cancel'];
 
   ngOnInit(): void {
-    console.log(this.strategies);
     this.strategyParams = {
       params: {
         dataSource: this.strategies,

@@ -1,6 +1,18 @@
-<ejs-sidebar #ejsSidebar [width]="250" [target]="target">
-  <ejs-treeview
-    [fields]="fields"
-    (nodeSelected)="onNodeSelect($event)"
-  ></ejs-treeview>
+<ejs-sidebar #ejsSidebar [width]="200" [target]="target">
+  <div class="sidebar-content">
+    <div class="user-info">
+      <div class="user-icon">
+        <i class="fas fa-user-circle"></i>
+      </div>
+      <h4 class="user-name">Marco Marchionni</h4>
+      <p class="user-account">Account n. U71228284</p>
+      <div class="image"><img src="" /></div>
+    </div>
+    <div class="menu-treeview">
+      <ejs-treeview
+        [fields]="fields"
+        (nodeSelected)="onNodeSelect($event)"
+      ></ejs-treeview>
+    </div>
+  </div>
 </ejs-sidebar>
