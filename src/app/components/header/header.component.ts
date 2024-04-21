@@ -27,7 +27,7 @@ export class HeaderComponent implements AfterViewInit {
   }
 
   calculateAppBarHeight() {
-    this.appBarHeight = (this.appBar as ElementRef).nativeElement.offsetHeight;
+    this.appBarHeight = this.appBar?.nativeElement?.offsetHeight ?? 0;
   }
 
   getAppBarHeight(): number {
