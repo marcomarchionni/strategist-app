@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  EventEmitter,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { AppBarModule } from '@syncfusion/ej2-angular-navigations';
 import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
 
@@ -9,8 +16,23 @@ import { ButtonModule } from '@syncfusion/ej2-angular-buttons';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
-export class HeaderComponent {
+export class HeaderComponent implements AfterViewInit {
   @Output() toggleSidenav = new EventEmitter<void>();
+  @ViewChild('appBar', { static: true }) appBar?: ElementRef;
+
+  public appBarHeight: number = 0;
+
+  ngAfterViewInit() {
+    this.calculateAppBarHeight();
+  }
+
+  calculateAppBarHeight() {
+    this.appBarHeight = (this.appBar as ElementRef).nativeElement.offsetHeight;
+  }
+
+  getAppBarHeight(): number {
+    return this.appBarHeight;
+  }
 
   onMenuClick() {
     this.toggleSidenav.emit();
