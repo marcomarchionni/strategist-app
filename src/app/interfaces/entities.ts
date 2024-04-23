@@ -40,8 +40,10 @@ export interface Strategy {
 
 export interface Portfolio {
   id: number;
+  created: Date;
   name: string;
-  strategies: Strategy[];
+  description?: string;
+  strategies?: Strategy[];
 }
 
 export interface ShortStrategy {

@@ -1,6 +1,6 @@
 <ejs-grid
   #grid
-  [dataSource]="strategies"
+  [dataSource]="portfolios"
   [editSettings]="editSettings"
   [toolbar]="toolbar"
 >
@@ -13,30 +13,23 @@
       [allowEditing]="false"
     ></e-column>
     <e-column
-      field="dateCrated"
+      field="created"
       headerText="Created"
       format="yMd"
       width="100"
       [allowEditing]="false"
     ></e-column>
     <e-column
-      field="strategyName"
+      field="name"
       headerText="Name"
       width="120"
-      [allowEditing]="false"
-    ></e-column>
-    <e-column
-      field="portfolioName"
-      headerText="Portfolio"
-      editType="dropdownedit"
-      [edit]="portfolios"
-      width="150"
+      [allowEditing]="true"
     ></e-column>
     <e-column
       field="description"
       headerText="Description"
       width="100"
-      [allowEditing]="false"
+      [allowEditing]="true"
     ></e-column>
   </e-columns>
 </ejs-grid>

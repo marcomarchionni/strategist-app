@@ -20,7 +20,6 @@ import { CommonModule } from '@angular/common';
   providers: [EditService, ToolbarService, PageService, CommandColumnService],
 })
 export class PortfolioTableComponent {
-  @Input() strategies?: DataManager;
   @Input() portfolios?: DataManager;
 
   public editSettings: EditSettingsModel = {
