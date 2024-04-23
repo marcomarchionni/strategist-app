@@ -67,8 +67,7 @@ export class SidenavComponent {
   private navigateToRoute(nodeText: string) {
     switch (nodeText) {
       case 'Dashboard':
-        // this.router.navigate(['/dashboard']);
-        console.log('Dashboard route not implemented');
+        this.router.navigate(['/dashboard']);
         break;
       case 'Portfolios':
         //this.router.navigate(['/portfolios']);

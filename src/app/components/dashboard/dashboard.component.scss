@@ -1,0 +1,28 @@
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Creates three columns */
+  grid-gap: 2rem; /* Space between cards */
+  padding: 2rem; /* Padding around the
+  
+  entire grid */
+}
+
+.mm-card-title {
+  font-size: 1.2em !important;
+  font-weight: bold !important;
+}
+
+.e-card {
+  box-shadow: none;
+  border: 1px solid rgb(var(--color-sf-outline-variant));
+  justify-content: start;
+}
+
+.e-card:hover {
+  background: linear-gradient(
+      0deg,
+      rgba(var(--color-sf-primary), 0.1),
+      rgba(var(--color-sf-primary), 0.1)
+    ),
+    rgb(var(--color-sf-surface)); /* Hover effect */
+}

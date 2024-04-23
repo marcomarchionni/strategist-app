@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TradeService } from '../../../services/trade-service/trade.service';
-import { TradeFilterComponent as TradeFilterComponent } from '../trade-filter/trade-filter.component';
+
 import { TradeTableComponent } from '../trade-table/trade-table.component';
 import { StrategyService } from '../../../services/strategy-service/strategy.service';
 import { DataManager } from '@syncfusion/ej2-data';
@@ -11,7 +11,7 @@ import { DataManager } from '@syncfusion/ej2-data';
   templateUrl: './trade-view.component.html',
   styleUrl: './trade-view.component.scss',
   providers: [],
-  imports: [TradeFilterComponent, TradeTableComponent],
+  imports: [TradeTableComponent],
 })
 export class TradeViewComponent {
   tableData: DataManager = this.tradeService.getTrades();
