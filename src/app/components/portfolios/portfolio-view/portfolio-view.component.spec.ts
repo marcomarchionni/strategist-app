@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PositionFilterComponent } from './position-filter.component';
+import { PortfolioViewComponent } from './portfolio-view.component';
 
-describe('PositionFilterComponent', () => {
-  let component: PositionFilterComponent;
-  let fixture: ComponentFixture<PositionFilterComponent>;
+describe('PortfolioViewComponent', () => {
+  let component: PortfolioViewComponent;
+  let fixture: ComponentFixture<PortfolioViewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PositionFilterComponent]
+      imports: [PortfolioViewComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(PositionFilterComponent);
+    fixture = TestBed.createComponent(PortfolioViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

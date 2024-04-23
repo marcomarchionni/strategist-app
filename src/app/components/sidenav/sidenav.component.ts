@@ -70,12 +70,10 @@ export class SidenavComponent {
         this.router.navigate(['/dashboard']);
         break;
       case 'Portfolios':
-        //this.router.navigate(['/portfolios']);
-        console.log('Portfolios route not implemented');
+        this.router.navigate(['/portfolios']);
         break;
       case 'Strategies':
-        // this.router.navigate(['/strategies']);
-        console.log('Strategies route not implemented');
+        this.router.navigate(['/strategies']);
         break;
       case 'All Trades':
         this.router.navigate(['/trades']);

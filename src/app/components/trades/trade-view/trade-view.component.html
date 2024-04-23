@@ -1,7 +1,9 @@
 <div class="trades-view">
-  <h2>Trades</h2>
-  <app-trade-table
-    [tableData]="tableData"
-    [strategies]="strategies"
-  ></app-trade-table>
+  <h2 class="mm-grid-title">Trades</h2>
+  <div class="mm-table-container">
+    <app-trade-table
+      [tableData]="tableData"
+      [strategies]="strategies"
+    ></app-trade-table>
+  </div>
 </div>
