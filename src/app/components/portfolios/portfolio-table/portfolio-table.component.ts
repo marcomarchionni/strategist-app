@@ -8,13 +8,10 @@ import {
   CommandColumnService,
   EditSettingsModel,
   ToolbarItems,
-  ActionEventArgs,
-  BatchAddArgs,
-  BatchDeleteArgs,
   BeforeBatchAddArgs,
   QueryCellInfoEventArgs,
 } from '@syncfusion/ej2-angular-grids';
-import { CommonModule, formatDate } from '@angular/common';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-portfolio-table',
@@ -40,7 +37,6 @@ export class PortfolioTableComponent {
 
   queryCellInfo(args: QueryCellInfoEventArgs) {
     if (args?.column?.field === 'name') {
-      console.log('QueryCellInfo', args);
       const cellElement = args.cell as HTMLElement;
       cellElement.style.fontWeight = 'bold';
     }

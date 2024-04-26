@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { DataManager } from '@syncfusion/ej2-data';
+import { DataManager, UrlAdaptor } from '@syncfusion/ej2-data';
 import { portfolios } from '../../data/portfolios';
 
 @Injectable({
@@ -8,7 +8,11 @@ import { portfolios } from '../../data/portfolios';
 export class PortfolioService {
   constructor() {}
 
+  url = 'http://localhost:8080/api/v1/portfolios';
+
   getPortfolios() {
-    return new DataManager(portfolios);
+    return new DataManager({
+      url: this.url,
+    });
   }
 }
