@@ -3,6 +3,8 @@
   [dataSource]="portfolios"
   [editSettings]="editSettings"
   [toolbar]="toolbar"
+  (queryCellInfo)="queryCellInfo($event)"
+  (beforeBatchAdd)="beforeBatchAdd($event)"
 >
   <e-columns>
     <e-column
@@ -15,7 +17,7 @@
     <e-column
       field="created"
       headerText="Created"
-      format="yMd"
+      format="yyyy-MM-dd"
       width="100"
       [allowEditing]="false"
     ></e-column>
@@ -24,6 +26,7 @@
       headerText="Name"
       width="120"
       [allowEditing]="true"
+      [validationRules]="nameRules"
     ></e-column>
     <e-column
       field="description"

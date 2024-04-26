@@ -24,7 +24,7 @@ export const portfolios: Portfolio[] = [
   },
   {
     id: 4,
-    created: new Date('2021-04-01'),
+    created: new Date('2021-04-28'),
     name: 'Growth Portfolio',
     description: 'This is a growth portfolio that is meant to grow over time.',
   },
