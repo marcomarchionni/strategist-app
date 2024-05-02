@@ -44,9 +44,10 @@ export class PortfolioTableComponent {
 
   beforeBatchAdd(args: BeforeBatchAddArgs) {
     console.log('Before batch add triggered', args);
-    const today = new Date().toDateString();
+    const today = new Date().toISOString().substring(0, 10);
+    console.log('Today', today);
     if (args.defaultData) {
-      (args.defaultData as { created: string })['created'] = today;
+      (args.defaultData as { createdAt: string })['createdAt'] = today;
       console.log('Created date populated BeforeBatchAdd', args);
     }
   }
