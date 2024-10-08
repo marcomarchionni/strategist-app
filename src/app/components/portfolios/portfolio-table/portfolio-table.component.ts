@@ -1,17 +1,18 @@
-import { Component, Input } from '@angular/core';
-import { DataManager } from '@syncfusion/ej2-data';
-import {
-  GridModule,
-  EditService,
-  ToolbarService,
-  PageService,
-  CommandColumnService,
-  EditSettingsModel,
-  ToolbarItems,
-  BeforeBatchAddArgs,
-  QueryCellInfoEventArgs,
-} from '@syncfusion/ej2-angular-grids';
 import { CommonModule } from '@angular/common';
+import { Component, Input } from '@angular/core';
+import {
+  BeforeBatchAddArgs,
+  CommandColumnService,
+  EditService,
+  EditSettingsModel,
+  GridModule,
+  PageService,
+  PageSettingsModel,
+  QueryCellInfoEventArgs,
+  ToolbarItems,
+  ToolbarService,
+} from '@syncfusion/ej2-angular-grids';
+import { DataManager } from '@syncfusion/ej2-data';
 
 @Component({
   selector: 'app-portfolio-table',
@@ -34,6 +35,7 @@ export class PortfolioTableComponent {
 
   public toolbar: ToolbarItems[] = ['Add', 'Update', 'Delete', 'Cancel'];
   public nameRules = { required: true, minLength: 3, maxLength: 30 };
+  public pageSettings: PageSettingsModel = { pageSize: 10 }; // Set the default page size
 
   queryCellInfo(args: QueryCellInfoEventArgs) {
     if (args?.column?.field === 'name') {
