@@ -6,13 +6,13 @@
   display: flex;
   flex-direction: column;
   padding: 2em 0;
+  height: calc(100% - var(--header-height));
 }
 
 .sign-out {
-  margin-top: 1rem; /* Push to the bottom */
+  margin-top: auto; /* Push to the bottom */
   padding: 2rem 3rem;
   cursor: pointer;
-  // color: rgb(var(--color-sf-secondary));
   font-size: 1.2em;
   border-top: 1px solid rgb(var(--color-sf-outline-variant));
 
