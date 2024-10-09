@@ -8,6 +8,7 @@ import {
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { AuthService } from '../../../services/auth-service/auth.service';
 
 @Component({
   selector: 'app-signin',
@@ -24,7 +25,7 @@ import { MatInputModule } from '@angular/material/input';
 export class SigninComponent implements OnInit {
   form!: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private authService: AuthService) {
     this.form = this.fb.group({
       email: [''],
       password: [''],
@@ -39,6 +40,20 @@ export class SigninComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.form.value);
+    if (this.form.valid) {
+      const { email, password } = this.form.value;
+      // Call the AuthService login method
+      this.authService.signin(email, password).subscribe({
+        next: (response) => {
+          console.log('Login successful');
+        },
+        error: (error) => {
+          console.error('Login failed', error);
+        },
+      });
+    } else {
+      // Mark all fields as touched to trigger validation messages
+      this.form.markAllAsTouched();
+    }
   }
 }

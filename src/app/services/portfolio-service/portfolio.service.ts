@@ -1,18 +1,21 @@
 import { Injectable } from '@angular/core';
-import { DataManager, UrlAdaptor } from '@syncfusion/ej2-data';
-import { portfolios } from '../../data/portfolios';
+import { DataManager } from '@syncfusion/ej2-data';
+import { environment } from '../../../environments/environment';
+import { AuthService } from '../auth-service/auth.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PortfolioService {
-  constructor() {}
+  constructor(private authService: AuthService) {}
 
-  url = 'http://localhost:8080/api/v1/portfolios';
+  url = environment.apiBaseUrl + 'portfolios';
 
   getPortfolios() {
+    const token = this.authService.getToken();
     return new DataManager({
       url: this.url,
+      headers: [{ Authorization: `Bearer ${token}` }],
     });
   }
 }

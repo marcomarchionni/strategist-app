@@ -1,5 +1,6 @@
-@import "../node_modules/@syncfusion/ej2-material3-theme/styles/material3.css";
-@import "@fortawesome/fontawesome-free/css/all.css";
+:root {
+  --header-height: 48px; /* Define the header height variable */
+}
 
 html,
 body {
@@ -23,4 +24,13 @@ body {
 .e-card-header-title {
   font-size: 1.2em; /* Larger font */
   font-weight: bold;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }

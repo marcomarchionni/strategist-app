@@ -1,11 +1,11 @@
 <ejs-sidebar #ejsSidebar [width]="200" [target]="target">
   <div class="sidebar-content">
-    <div class="user-info">
+    <div class="user-info" *ngIf="user">
       <div class="user-icon">
         <i class="fas fa-user-circle"></i>
       </div>
-      <h4 class="user-name">Marco Marchionni</h4>
-      <p class="user-account">Account n. U71228284</p>
+      <h4 class="user-name">{{ user.firstName }} {{ user.lastName }}</h4>
+      <p class="user-account">Account n. {{ user.accountId }}</p>
       <div class="image"><img src="" /></div>
     </div>
     <div class="menu-treeview">
@@ -13,6 +13,10 @@
         [fields]="fields"
         (nodeSelected)="onNodeSelect($event)"
       ></ejs-treeview>
+    </div>
+    <!-- Add Sign Out button at the bottom -->
+    <div class="sign-out" (click)="onSignOut()">
+      <i class="fas fa-sign-out-alt"></i> Sign Out
     </div>
   </div>
 </ejs-sidebar>

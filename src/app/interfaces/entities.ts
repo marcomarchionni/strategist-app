@@ -55,3 +55,10 @@ export interface TradesTableData {
   result: Trade[];
   count: number;
 }
+
+export interface User {
+  firstName: string;
+  lastName: string;
+  email: string;
+  accountId: string;
+}
