@@ -1,5 +1,5 @@
-@import "../node_modules/@syncfusion/ej2-material3-theme/styles/material3.css";
-@import "@fortawesome/fontawesome-free/css/all.css";
+// @import "../node_modules/@syncfusion/ej2-material3-theme/styles/material3.css";
+// @import "@fortawesome/fontawesome-free/css/all.css";
 
 html,
 body {
@@ -24,3 +24,6 @@ body {
   font-size: 1.2em; /* Larger font */
   font-weight: bold;
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

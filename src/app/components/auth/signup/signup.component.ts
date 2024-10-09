@@ -1,9 +1,14 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { ReactiveFormsModule } from '@angular/forms';
+import { AuthService } from '../../../services/auth-service/auth.service';
 
 @Component({
   selector: 'app-signup',
@@ -20,7 +25,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 export class SignupComponent {
   form!: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private authService: AuthService) {
     this.form = this.fb.group({
       email: [''],
       password: [''],

@@ -1,5 +1,34 @@
 .auth-view {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(var(--color-sf-primary));
+  min-height: 100%;
+}
+
+.title {
+  font-size: 2em;
+  font-weight: bold;
+  margin: 3rem;
+  color: rgb(var(--color-sf-on-primary));
+  text-transform: uppercase;
+}
+
+.forms-container {
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (max-width: 1200px) {
+  .forms-container {
+    flex-direction: column;
+  }
+}
+
+.divider {
+  margin: 2rem;
+  font-size: large;
+  text-align: center;
+  text-transform: uppercase;
+  color: rgb(var(--color-sf-on-primary));
 }
