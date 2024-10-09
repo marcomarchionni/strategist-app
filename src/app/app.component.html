@@ -1,4 +1,4 @@
-<ng-container *ngIf="authService.isAuthenticated(); else authView">
+<ng-container *ngIf="isAuthenticated; else authView">
   <!-- Show header, sidebar, and content if authenticated -->
   <app-header (toggleSidenav)="toggleSidenav()"></app-header>
   <div class="main-content">

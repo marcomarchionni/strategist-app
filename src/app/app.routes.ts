@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { AuthViewComponent } from './components/auth/auth-view/auth-view.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { PortfolioViewComponent } from './components/portfolios/portfolio-view/portfolio-view.component';
 import { PositionViewComponent } from './components/positions/position-view/position-view.component';
@@ -12,23 +11,18 @@ export const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
-    canActivate: [authGuard],
   }, // Protect with guard
   {
     path: 'portfolios',
     component: PortfolioViewComponent,
-    canActivate: [authGuard],
   }, // Protect with guard
   {
     path: 'strategies',
     component: StrategyViewComponent,
-    canActivate: [authGuard],
   }, // Protect with guard
   { path: 'trades', component: TradeViewComponent, canActivate: [authGuard] }, // Protect with guard
   {
     path: 'positions',
     component: PositionViewComponent,
-    canActivate: [authGuard],
   }, // Protect with guard
-  { path: 'auth', component: AuthViewComponent },
 ];

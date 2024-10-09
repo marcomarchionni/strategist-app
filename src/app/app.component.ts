@@ -23,8 +23,13 @@ export class AppComponent implements AfterViewInit {
   title = 'strategist-app';
   @ViewChild(SidenavComponent) sidenav?: SidenavComponent;
   @ViewChild(HeaderComponent) header?: HeaderComponent;
+  isAuthenticated = false;
 
-  constructor(public authService: AuthService) {}
+  constructor(public authService: AuthService) {
+    this.authService.isAuthenticated$.subscribe((auth) => {
+      this.isAuthenticated = auth;
+    });
+  }
 
   ngAfterViewInit(): void {
     this.adjustMainContentHeight();

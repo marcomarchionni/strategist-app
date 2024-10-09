@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
+import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
 import { User } from '../../interfaces/entities';
 
@@ -16,8 +16,26 @@ export class AuthService {
   public token$ = this.tokenSubject.asObservable();
   private userSubject = new BehaviorSubject<User | null>(null); // Store user info
   public user$ = this.userSubject.asObservable(); // Observable for user info
+  public isAuthenticated$: Observable<boolean> = new Observable<boolean>();
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) {
+    const savedToken = localStorage.getItem('token');
+    const savedUser = localStorage.getItem('user');
+
+    if (savedToken) {
+      this.tokenSubject.next(savedToken);
+    }
+
+    if (savedUser) {
+      this.userSubject.next(JSON.parse(savedUser));
+    }
+
+    // Create an observable that combines token and user state to determine if authenticated
+    this.isAuthenticated$ = combineLatest([
+      this.tokenSubject,
+      this.userSubject,
+    ]).pipe(map(([token, user]) => !!token && !!user));
+  }
 
   signin(email: string, password: string): Observable<any> {
     return this.http.post<any>(this.apiUrl, { email, password }).pipe(
@@ -38,16 +56,11 @@ export class AuthService {
     this.router.navigate(['/']);
   }
 
-  isAuthenticated(): boolean {
-    return !!localStorage.getItem('token') && !!localStorage.getItem('user');
-  }
-
   getToken(): string | null {
-    return localStorage.getItem('token');
+    return this.tokenSubject.value;
   }
 
   getUser(): User | null {
-    const user = localStorage.getItem('user');
-    return user ? JSON.parse(user) : null; // Return user from localStorage if available
+    return this.userSubject.value; // Return user from localStorage if available
   }
 }

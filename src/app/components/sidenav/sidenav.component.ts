@@ -1,18 +1,21 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import {
   SidebarModule,
   TreeViewModule,
 } from '@syncfusion/ej2-angular-navigations';
+import { User } from '../../interfaces/entities';
+import { AuthService } from '../../services/auth-service/auth.service';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [RouterLink, SidebarModule, TreeViewModule],
+  imports: [RouterLink, SidebarModule, TreeViewModule, CommonModule],
   templateUrl: './sidenav.component.html',
   styleUrl: './sidenav.component.scss',
 })
-export class SidenavComponent {
+export class SidenavComponent implements OnInit {
   @Input() target?: string;
   @ViewChild('ejsSidebar') public ejsSidebar?: SidenavComponent;
 
@@ -57,7 +60,16 @@ export class SidenavComponent {
     child: 'nodeChild',
   };
 
-  constructor(private router: Router) {}
+  user: User | null = null;
+
+  constructor(private router: Router, private authService: AuthService) {}
+
+  ngOnInit(): void {
+    this.authService.user$.subscribe((user) => {
+      this.user = user;
+      console.log('User:', user);
+    });
+  }
 
   onNodeSelect(args: any) {
     const nodeText = args.nodeData.text || '';
@@ -92,5 +104,9 @@ export class SidenavComponent {
       default:
         console.log('Route does not exist for:', nodeText);
     }
+  }
+
+  onSignOut() {
+    this.authService.logout();
   }
 }
