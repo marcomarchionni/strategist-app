@@ -9,6 +9,7 @@ import {
   PageService,
   PageSettingsModel,
   QueryCellInfoEventArgs,
+  SortService,
   ToolbarItems,
   ToolbarService,
 } from '@syncfusion/ej2-angular-grids';
@@ -20,7 +21,13 @@ import { DataManager } from '@syncfusion/ej2-data';
   imports: [CommonModule, GridModule],
   templateUrl: './portfolio-table.component.html',
   styleUrl: './portfolio-table.component.scss',
-  providers: [EditService, ToolbarService, PageService, CommandColumnService],
+  providers: [
+    EditService,
+    ToolbarService,
+    PageService,
+    CommandColumnService,
+    SortService,
+  ],
 })
 export class PortfolioTableComponent {
   @Input() portfolios?: DataManager;
@@ -36,6 +43,9 @@ export class PortfolioTableComponent {
   public toolbar: ToolbarItems[] = ['Add', 'Update', 'Delete', 'Cancel'];
   public nameRules = { required: true, minLength: 3, maxLength: 30 };
   public pageSettings: PageSettingsModel = { pageSize: 10 }; // Set the default page size
+  public sortSettings = {
+    columns: [{ field: 'name', direction: 'Ascending' }],
+  };
 
   queryCellInfo(args: QueryCellInfoEventArgs) {
     if (args?.column?.field === 'name') {
