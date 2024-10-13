@@ -5,6 +5,8 @@ import {
   CommandColumnService,
   EditService,
   EditSettingsModel,
+  FilterService,
+  FilterSettingsModel,
   GridModule,
   PageService,
   PageSettingsModel,
@@ -27,6 +29,7 @@ import { DataManager } from '@syncfusion/ej2-data';
     PageService,
     CommandColumnService,
     SortService,
+    FilterService,
   ],
 })
 export class PortfolioTableComponent {
@@ -45,6 +48,9 @@ export class PortfolioTableComponent {
   public pageSettings: PageSettingsModel = { pageSize: 10 }; // Set the default page size
   public sortSettings = {
     columns: [{ field: 'name', direction: 'Ascending' }],
+  };
+  public filterSettings: FilterSettingsModel = {
+    type: 'Menu',
   };
 
   queryCellInfo(args: QueryCellInfoEventArgs) {
