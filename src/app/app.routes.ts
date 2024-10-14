@@ -1,13 +1,10 @@
 import { Routes } from '@angular/router';
 import { AuthViewComponent } from './components/auth/auth-view/auth-view.component';
 import { MainComponent } from './components/main/main.component';
-import { authGuard } from './guards/auth.guard';
+import { authGuard } from './guards/auth/auth.guard';
+import { noAuthGuard } from './guards/no-auth/no-auth.guard';
 
 export const routes: Routes = [
-  {
-    path: 'auth', // Unauthenticated route (login, signup, etc.)
-    component: AuthViewComponent,
-  },
   {
     path: '', // Authenticated route
     component: MainComponent,
@@ -50,6 +47,11 @@ export const routes: Routes = [
       },
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
     ],
+  },
+  {
+    path: 'auth', // Unauthenticated route (login, signup, etc.)
+    component: AuthViewComponent,
+    canActivate: [noAuthGuard], // Protect this route
   },
   {
     path: '**',

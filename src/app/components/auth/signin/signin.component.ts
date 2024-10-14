@@ -8,6 +8,7 @@ import {
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth-service/auth.service';
 
 @Component({
@@ -25,7 +26,11 @@ import { AuthService } from '../../../services/auth-service/auth.service';
 export class SigninComponent implements OnInit {
   form!: FormGroup;
 
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router
+  ) {
     this.form = this.fb.group({
       email: [''],
       password: [''],
@@ -46,6 +51,7 @@ export class SigninComponent implements OnInit {
       this.authService.signin(email, password).subscribe({
         next: (response) => {
           console.log('Login successful');
+          this.router.navigate(['/dashboard']);
         },
         error: (error) => {
           console.error('Login failed', error);

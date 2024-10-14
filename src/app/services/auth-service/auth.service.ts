@@ -22,15 +22,17 @@ export class AuthService {
   public isAuthenticated$: Observable<boolean> = new Observable<boolean>();
 
   constructor(private http: HttpClient, private router: Router) {
-    const savedToken = localStorage.getItem('token');
+    const savedToken = localStorage.getItem('accessToken');
     const savedUser = localStorage.getItem('user');
     const savedRefreshToken = localStorage.getItem('refreshToken');
 
     if (savedToken) {
+      console.log('Saved token found');
       this.accessTokenSubject.next(savedToken);
     }
 
     if (savedUser) {
+      console.log('Saved user found');
       this.userSubject.next(JSON.parse(savedUser));
     }
 
@@ -58,14 +60,13 @@ export class AuthService {
     );
   }
 
-  logout() {
+  signOut() {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');
     localStorage.removeItem('user'); // Remove user info
     this.accessTokenSubject.next(null);
     this.refreshTokenSubject.next(null);
     this.userSubject.next(null); // Clear user info
-    this.router.navigate(['/']);
   }
 
   getAccessToken(): string | null {
