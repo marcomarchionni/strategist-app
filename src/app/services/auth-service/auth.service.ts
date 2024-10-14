@@ -12,52 +12,64 @@ import { User } from '../../interfaces/entities';
 export class AuthService {
   private readonly apiUrl = environment.apiBaseUrl + 'auth/signin'; // Your backend login endpoint
 
-  private tokenSubject = new BehaviorSubject<string | null>(null);
-  public token$ = this.tokenSubject.asObservable();
+  private accessTokenSubject = new BehaviorSubject<string | null>(null);
+  public accessToken$ = this.accessTokenSubject.asObservable();
   private userSubject = new BehaviorSubject<User | null>(null); // Store user info
   public user$ = this.userSubject.asObservable(); // Observable for user info
+  private refreshTokenSubject = new BehaviorSubject<string | null>(null);
+  public refreshToken$ = this.refreshTokenSubject.asObservable();
+
   public isAuthenticated$: Observable<boolean> = new Observable<boolean>();
 
   constructor(private http: HttpClient, private router: Router) {
     const savedToken = localStorage.getItem('token');
     const savedUser = localStorage.getItem('user');
+    const savedRefreshToken = localStorage.getItem('refreshToken');
 
     if (savedToken) {
-      this.tokenSubject.next(savedToken);
+      this.accessTokenSubject.next(savedToken);
     }
 
     if (savedUser) {
       this.userSubject.next(JSON.parse(savedUser));
     }
 
+    if (savedRefreshToken) {
+      this.refreshTokenSubject.next(savedRefreshToken);
+    }
+
     // Create an observable that combines token and user state to determine if authenticated
     this.isAuthenticated$ = combineLatest([
-      this.tokenSubject,
+      this.accessTokenSubject,
       this.userSubject,
-    ]).pipe(map(([token, user]) => !!token && !!user));
+    ]).pipe(map(([accessToken, user]) => !!accessToken && !!user));
   }
 
   signin(email: string, password: string): Observable<any> {
     return this.http.post<any>(this.apiUrl, { email, password }).pipe(
       tap((response) => {
-        localStorage.setItem('token', response.token);
+        localStorage.setItem('accessToken', response.accessToken);
+        localStorage.setItem('refreshToken', response.refreshToken);
         localStorage.setItem('user', JSON.stringify(response.user));
-        this.tokenSubject.next(response.token);
+        this.accessTokenSubject.next(response.accessToken);
         this.userSubject.next(response.user);
+        this.refreshTokenSubject.next(response.refreshToken);
       })
     );
   }
 
   logout() {
-    localStorage.removeItem('token');
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
     localStorage.removeItem('user'); // Remove user info
-    this.tokenSubject.next(null);
+    this.accessTokenSubject.next(null);
+    this.refreshTokenSubject.next(null);
     this.userSubject.next(null); // Clear user info
     this.router.navigate(['/']);
   }
 
   getToken(): string | null {
-    return this.tokenSubject.value;
+    return this.accessTokenSubject.value;
   }
 
   getUser(): User | null {
