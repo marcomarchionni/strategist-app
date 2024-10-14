@@ -68,7 +68,7 @@ export class AuthService {
     this.router.navigate(['/']);
   }
 
-  getToken(): string | null {
+  getAccessToken(): string | null {
     return this.accessTokenSubject.value;
   }
 
