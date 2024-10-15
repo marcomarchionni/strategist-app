@@ -1,28 +1,60 @@
 import { Routes } from '@angular/router';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { PortfolioViewComponent } from './components/portfolios/portfolio-view/portfolio-view.component';
-import { PositionViewComponent } from './components/positions/position-view/position-view.component';
-import { StrategyViewComponent } from './components/strategies/strategy-view/strategy-view.component';
-import { TradeViewComponent } from './components/trades/trade-view/trade-view.component';
-import { authGuard } from './guards/auth.guard';
+import { AuthViewComponent } from './components/auth/auth-view/auth-view.component';
+import { MainComponent } from './components/main/main.component';
+import { authGuard } from './guards/auth/auth.guard';
+import { noAuthGuard } from './guards/no-auth/no-auth.guard';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   {
-    path: 'dashboard',
-    component: DashboardComponent,
-  }, // Protect with guard
+    path: '', // Authenticated route
+    component: MainComponent,
+    canActivate: [authGuard], // Protect this route
+    children: [
+      {
+        path: 'dashboard',
+        loadComponent: () =>
+          import('./components/dashboard/dashboard.component').then(
+            (m) => m.DashboardComponent
+          ),
+      },
+      {
+        path: 'portfolios',
+        loadComponent: () =>
+          import(
+            './components/portfolios/portfolio-view/portfolio-view.component'
+          ).then((m) => m.PortfolioViewComponent),
+      },
+      {
+        path: 'strategies',
+        loadComponent: () =>
+          import(
+            './components/strategies/strategy-view/strategy-view.component'
+          ).then((m) => m.StrategyViewComponent),
+      },
+      {
+        path: 'trades',
+        loadComponent: () =>
+          import('./components/trades/trade-view/trade-view.component').then(
+            (m) => m.TradeViewComponent
+          ),
+      },
+      {
+        path: 'positions',
+        loadComponent: () =>
+          import(
+            './components/positions/position-view/position-view.component'
+          ).then((m) => m.PositionViewComponent),
+      },
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+    ],
+  },
   {
-    path: 'portfolios',
-    component: PortfolioViewComponent,
-  }, // Protect with guard
+    path: 'auth', // Unauthenticated route (login, signup, etc.)
+    component: AuthViewComponent,
+    canActivate: [noAuthGuard], // Protect this route
+  },
   {
-    path: 'strategies',
-    component: StrategyViewComponent,
-  }, // Protect with guard
-  { path: 'trades', component: TradeViewComponent, canActivate: [authGuard] }, // Protect with guard
-  {
-    path: 'positions',
-    component: PositionViewComponent,
-  }, // Protect with guard
+    path: '**',
+    redirectTo: '', // Redirect to home if route is unknown
+  },
 ];

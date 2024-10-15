@@ -12,7 +12,7 @@ export class PortfolioService {
   url = environment.apiBaseUrl + 'portfolios';
 
   getPortfolios() {
-    const token = this.authService.getToken();
+    const token = this.authService.getAccessToken();
     return new DataManager({
       url: this.url,
       headers: [{ Authorization: `Bearer ${token}` }],
