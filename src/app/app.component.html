@@ -1,15 +1,1 @@
-<ng-container *ngIf="isAuthenticated; else authView">
-  <!-- Show header, sidebar, and content if authenticated -->
-  <app-header (toggleSidenav)="toggleSidenav()"></app-header>
-  <div class="main-content">
-    <div class="main-view">
-      <router-outlet></router-outlet>
-    </div>
-  </div>
-  <app-sidebar target=".main-content"></app-sidebar>
-</ng-container>
-
-<!-- Show only the AuthViewComponent if not authenticated -->
-<ng-template #authView>
-  <app-auth-view></app-auth-view>
-</ng-template>
+<router-outlet></router-outlet>

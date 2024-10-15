@@ -5,6 +5,7 @@ import {
   CommandColumnService,
   EditService,
   EditSettingsModel,
+  FilterService,
   GridModule,
   PageService,
   PageSettingsModel,
@@ -27,6 +28,7 @@ import { DataManager } from '@syncfusion/ej2-data';
     PageService,
     CommandColumnService,
     SortService,
+    FilterService,
   ],
 })
 export class PortfolioTableComponent {
@@ -46,6 +48,7 @@ export class PortfolioTableComponent {
   public sortSettings = {
     columns: [{ field: 'name', direction: 'Ascending' }],
   };
+  public filterSettings = { type: 'Menu' };
 
   queryCellInfo(args: QueryCellInfoEventArgs) {
     if (args?.column?.field === 'name') {
