@@ -5,9 +5,9 @@
   [toolbar]="toolbar"
   [allowPaging]="true"
   [allowSorting]="true"
+  [allowFiltering]="true"
   [sortSettings]="sortSettings"
   [pageSettings]="pageSettings"
-  [allowFiltering]="true"
   [filterSettings]="filterSettings"
   (queryCellInfo)="queryCellInfo($event)"
   (beforeBatchAdd)="beforeBatchAdd($event)"
@@ -34,12 +34,14 @@
       width="120"
       [allowEditing]="true"
       [validationRules]="nameRules"
+      [allowFiltering]="true"
     ></e-column>
     <e-column
       field="description"
       headerText="Description"
       width="100"
       [allowEditing]="true"
+      [allowFiltering]="false"
     ></e-column>
   </e-columns>
 </ejs-grid>

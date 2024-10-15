@@ -6,6 +6,7 @@ import {
   EditService,
   EditSettingsModel,
   FilterService,
+  FilterSettingsModel,
   GridModule,
   PageService,
   PageSettingsModel,
@@ -48,7 +49,9 @@ export class PortfolioTableComponent {
   public sortSettings = {
     columns: [{ field: 'name', direction: 'Ascending' }],
   };
-  public filterSettings = { type: 'Menu' };
+  public filterSettings: FilterSettingsModel = {
+    type: 'Menu',
+  };
 
   queryCellInfo(args: QueryCellInfoEventArgs) {
     if (args?.column?.field === 'name') {
