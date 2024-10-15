@@ -19,11 +19,7 @@ export class SidenavComponent implements OnInit {
   @Input() target?: string;
   @ViewChild('ejsSidebar') public ejsSidebar?: SidenavComponent;
 
-  toggle() {
-    if (this.ejsSidebar) {
-      this.ejsSidebar.toggle();
-    }
-  }
+  public selectedNodes: string[] = []; // Store selected node IDs here
 
   public data: Object[] = [
     {
@@ -67,8 +63,34 @@ export class SidenavComponent implements OnInit {
   ngOnInit(): void {
     this.authService.user$.subscribe((user) => {
       this.user = user;
-      console.log('User:', user);
     });
+    this.highlightCurrentRoute();
+  }
+
+  private highlightCurrentRoute() {
+    const route = this.router.url; // Get the current URL
+    switch (route) {
+      case '/dashboard':
+        this.selectedNodes = ['01']; // Node ID for Dashboard
+        break;
+      case '/portfolios':
+        this.selectedNodes = ['02']; // Node ID for Portfolios
+        break;
+      case '/strategies':
+        this.selectedNodes = ['03'];
+        break;
+      case '/trades':
+        this.selectedNodes = ['04'];
+        break;
+      case '/positions':
+        this.selectedNodes = ['05'];
+        break;
+      case '/dividends':
+        this.selectedNodes = ['06'];
+        break;
+      default:
+        this.selectedNodes = []; // No selection for unknown routes
+    }
   }
 
   onNodeSelect(args: any) {
@@ -79,23 +101,23 @@ export class SidenavComponent implements OnInit {
   private navigateToRoute(nodeText: string) {
     switch (nodeText) {
       case 'Dashboard':
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['dashboard']);
         break;
       case 'Portfolios':
-        this.router.navigate(['/portfolios']);
+        this.router.navigate(['portfolios']);
         break;
       case 'Strategies':
-        this.router.navigate(['/strategies']);
+        this.router.navigate(['strategies']);
         break;
       case 'All Trades':
-        this.router.navigate(['/trades']);
+        this.router.navigate(['trades']);
         break;
       case 'Untagged':
         // this.router.navigate(['/trades/untagged']);
         console.log('Untagged route not implemented');
         break;
       case 'Positions':
-        this.router.navigate(['/positions']);
+        this.router.navigate(['positions']);
         break;
       case 'Dividends':
         // this.router.navigate(['/dividends']);
@@ -103,6 +125,12 @@ export class SidenavComponent implements OnInit {
         break;
       default:
         console.log('Route does not exist for:', nodeText);
+    }
+  }
+
+  toggle() {
+    if (this.ejsSidebar) {
+      this.ejsSidebar.toggle();
     }
   }
 
